@@ -1,6 +1,16 @@
+
 .App {
-  text-align: center;
+ background-image: url("./util/images/bg.jpg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+ min-height: 100vh;
+
+ @media screen and (max-width:480px){
+ }
 }
+
+
 
 .App-logo {
   height: 40vmin;
