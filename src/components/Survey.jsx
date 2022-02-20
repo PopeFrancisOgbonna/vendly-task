@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Lottie from "react-lottie";
 import NavBar from './NavBar';
 import Images from '../util/images';
 import {FaAngleRight, FaCheckCircle, FaHeart, FaTwitter} from "react-icons/fa"
@@ -7,7 +8,7 @@ import SurveyItems from './SurveyItems';
 import dommieUsers from '../util/users';
 import ValidateUser from './ValidateUser';
 import UserList from './UserList';
-
+import loadimg from "../util/lottie/lf20_tbhh9iso.json";
 
 const Survey = () => {
 
@@ -80,6 +81,15 @@ const Survey = () => {
     }
   }
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadimg,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  }
+  
   return ( 
     <Wrap>
       <NavBar />
@@ -112,7 +122,7 @@ const Survey = () => {
 
         <div className={show?"search-div":"hide"}>
           <div className="text-center mx-auto">
-            {loading && <img src={Images.loader} alt="loader" className="img-fluid icon" />}
+            {loading && <Lottie options={defaultOptions} className="icon"/>}
             { (found !==1 && !loading) && <img src={Images.searchError} alt="loader" className="img-fluid icon" />}
             <p className="text-center result-txt">{msg}</p>
           </div>
@@ -196,7 +206,8 @@ const Wrap = styled.div `
     }
 
     .icon{
-      width:180px;
+      width:120px;
+      background: #fff;
       padding:5px;
       margin:25% auto 0 auto;
       @media screen and (max-width:480px){
