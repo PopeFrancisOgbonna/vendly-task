@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Images from '../util/images';
-import {FaAngleRight, FaArrowLeft} from "react-icons/fa"
+import {FaArrowLeft} from "react-icons/fa"
 
-const SurveyItems = ({children, text,style}) => {
+const SurveyItems = ({children, step,handleStep}) => {
 
-  const [step,setStep] = useState(0);
   return (
     <Wrap>
       <div className="container-div my-3">
@@ -15,37 +14,36 @@ const SurveyItems = ({children, text,style}) => {
             <img className='img-fluid flag' src={Images.flag} alt="success-flag" />
           </div>
           {children}
-          <button className={style !=="light"?"btn": "btn lightBg"}>{text} <FaAngleRight className='ms-5'/></button>
-          { step === 1?
+          { step === 0?
             <p className='instruction text-center my-2'>Read<span className='ms-1' data-bs-toggle="modal" data-bs-target="#infoModal">Instructions</span></p>:
-            <p className='text-center my-2 back'><FaArrowLeft className='me-1' />Go Back</p>
+            <p className='text-center my-2 back' onClick={()=>handleStep(0)}><FaArrowLeft className='me-1' />Go Back</p>
           }
         </div>
       </div>
       <div className="modal fade" id="infoModal" tabIndex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-          <div className="modal-dialog modal-sm">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div className="modal-body p-4">
-                <h5 className='mb-3'>Instructions</h5>
-                <p>
-                  You can redeem this voucher on the Roving 
-                  Heights website by clicking on the "Redeem Now" button.
-                </p>
-                <p>
-                  The discount code will be applied automatically. If not applied,
-                  manually copy an dpast the discount code and follow the checkout instructions.
-                </p>
-                <p>
-                  Delivery is also covered so that you don't have to make any further payments.
-                </p>
-              </div>
-              <button type="button" className="btn btn-modal mx-4 mb-3" data-bs-dismiss="modal">Ok</button>
+        <div className="modal-dialog modal-sm">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div className="modal-body p-4">
+              <h5 className='mb-3'>Instructions</h5>
+              <p>
+                You can redeem this voucher on the Roving 
+                Heights website by clicking on the "Redeem Now" button.
+              </p>
+              <p>
+                The discount code will be applied automatically. If not applied,
+                manually copy an dpast the discount code and follow the checkout instructions.
+              </p>
+              <p>
+                Delivery is also covered so that you don't have to make any further payments.
+              </p>
+            </div>
+            <button type="button" className="btn btn-modal mx-4 mb-3" data-bs-dismiss="modal">Ok</button>
           </div>
         </div>
+      </div>
     </Wrap>
   );
 }

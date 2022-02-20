@@ -7,7 +7,7 @@ import { FaEllipsisH } from 'react-icons/fa';
 const ValidateUser = () => {
   return (
     <Wrap>
-      <div className="text-center my-5 mx-auto   valid-card">
+      <div className="text-center my-4 mx-auto   valid-card">
         <img src={Images.lock} alt="" className="img-fluid my-4" />
         <h4>₦2,000.00</h4>
         <p>Please wait.</p>

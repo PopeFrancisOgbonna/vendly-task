@@ -16,3 +16,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: "Zanzabar";
+  src:local("Zanzabar"),
+    url(../public/fonts/Zanzabar.otf) format("opentype");
+}
