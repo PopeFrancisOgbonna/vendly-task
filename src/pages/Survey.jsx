@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Lottie from "react-lottie";
-import NavBar from './NavBar';
+import NavBar from '../components/NavBar';
 import {FaAngleRight, FaCheckCircle, FaTwitter} from "react-icons/fa"
-import SurveyItems from './SurveyItems';
+import SurveyItems from '../components/SurveyItems';
 import dommieUsers from '../util/users';
-import ValidateUser from './ValidateUser';
-import UserList from './UserList';
+import ValidateUser from '../components/ValidateUser';
+import UserList from '../components/UserList';
 import animation from "../util/lottie";
 
 const Survey = () => {

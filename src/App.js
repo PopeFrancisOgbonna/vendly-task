@@ -1,5 +1,5 @@
 import './App.css';
-import Survey from './components/Survey';
+import Survey from './pages/Survey';
 
 function App() {
   return (
