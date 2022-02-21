@@ -212,7 +212,7 @@ const Wrap = styled.div `
       height:180px;
       background: #fff;
       padding:5px;
-      margin:25% auto 0 auto;
+      margin:15% auto 0 auto;
       @media screen and (max-width:480px){
         width:140px;
       }
