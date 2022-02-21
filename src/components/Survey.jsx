@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Lottie from "react-lottie";
 import NavBar from './NavBar';
-import Images from '../util/images';
-import {FaAngleRight, FaCheckCircle, FaHeart, FaTwitter} from "react-icons/fa"
+import {FaAngleRight, FaCheckCircle, FaTwitter} from "react-icons/fa"
 import SurveyItems from './SurveyItems';
 import dommieUsers from '../util/users';
 import ValidateUser from './ValidateUser';
 import UserList from './UserList';
-import loadimg from "../util/lottie/lf20_tbhh9iso.json";
+import animation from "../util/lottie";
 
 const Survey = () => {
 
@@ -81,13 +80,16 @@ const Survey = () => {
     }
   }
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loadimg,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
+  const setOpt = (data)=>{
+    const defaultOptions = {
+      loop: true,
+      autoplay: true,
+      animationData:data,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+      }
     }
+    return defaultOptions;
   }
   
   return ( 
@@ -111,7 +113,7 @@ const Survey = () => {
             <div className={hideIcon ==='all'?'hide':"favicons"}>
               <FaCheckCircle className={hideIcon !=="icons"?'check rotate-scale-up':'hide'}/>
               <FaTwitter className={hideIcon !=='icons'?"hide":'tweet'}/>
-              <FaHeart className={hideIcon !=="icons"?"hide":'heart'}/>
+              <div className={hideIcon !=="icons"?"hide":'heart'}><Lottie options={setOpt(animation.heart)}/></div>
             </div>
           </div>
           { hideIcon ==='icons'?
@@ -122,8 +124,8 @@ const Survey = () => {
 
         <div className={show?"search-div":"hide"}>
           <div className="text-center mx-auto">
-            {loading && <Lottie options={defaultOptions} className="icon"/>}
-            { (found !==1 && !loading) && <img src={Images.searchError} alt="loader" className="img-fluid icon" />}
+            {loading && <div className='icon'><Lottie options={setOpt(animation.loader)}/></div>}
+            { (found !==1 && !loading) && <div className='icon'><Lottie options={setOpt(animation.search)}/></div>}
             <p className="text-center result-txt">{msg}</p>
           </div>
           { found !==0 &&
@@ -206,7 +208,8 @@ const Wrap = styled.div `
     }
 
     .icon{
-      width:120px;
+      width:180px;
+      height:180px;
       background: #fff;
       padding:5px;
       margin:25% auto 0 auto;
@@ -228,7 +231,10 @@ const Wrap = styled.div `
       bottom:14px;
       right:12px;
       .check,.heart{
-        color:#17E7B3;
+        width:30px;
+      }
+      .check{
+        color:#17e7b3;
       }
       .tweet{
         color:#0077b6;

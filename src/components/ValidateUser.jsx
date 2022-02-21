@@ -1,14 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import Images from '../util/images';
+import animation from '../util/lottie';
+import Lottie from "react-lottie";
 import { FaEllipsisH } from 'react-icons/fa';
 
 
 const ValidateUser = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData:animation.lock,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  }
   return (
     <Wrap>
       <div className="text-center my-4 mx-auto   valid-card">
-        <img src={Images.lock} alt="" className="img-fluid my-4" />
+        <Lottie options={defaultOptions} width={120} height={150}/>
         <h4>₦2,000.00</h4>
         <p>Please wait.</p>
         <p className='val'>Validating user credentials...</p>
@@ -25,6 +34,7 @@ const Wrap = styled.div `
     width: 15rem;
     background:#fff;
     border-radius:6px;
+    padding-top:10px;
 
     border:2px solid #abf2e3;
     @media screen and (max-width: 768px){
